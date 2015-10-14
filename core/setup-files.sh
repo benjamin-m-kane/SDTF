@@ -44,15 +44,15 @@ do
         if test -f "$i"
         then
             echo "Replacing values in $i"
-            replace("YOUR_RETHINKDB_AUTH_KEY_HERE_IF_ANY" "$rethinkAuthkey" "$i")
-            replace("rethinkdb.stf.example.org" "$rethinkPublicIP" "$i")
-            replace("https://stf.example.org/auth/mock/" "$authURL" "$i")
-            replace("https://stf.example.org/" "$websocketURL" "$i")
-            replace("https://stf.example.org/" "$appURL" "$i")
-            replace("appside.stf.example.org" "$appTriproxyURL" "$i")
-            replace("devside.stf.example.org" "$devTriproxyURL" "$i")
-            replace("https://stf.example.org/" "$storageURL" "$i")
-            replace("YOUR_SESSION_SECRET_HERE" "$sessionSecret" "$i")
+            replace 'YOUR_RETHINKDB_AUTH_KEY_HERE_IF_ANY' "$rethinkAuthkey" "$i"
+            replace 'rethinkdb.stf.example.org' "$rethinkPublicIP" "$i"
+            replace 'https://stf.example.org/auth/mock/' "$authURL" "$i"
+            replace 'https://stf.example.org/' "$websocketURL" "$i"
+            replace 'https://stf.example.org/' "$appURL" "$i"
+            replace 'appside.stf.example.org' "$appTriproxyURL" "$i"
+            replace 'devside.stf.example.org' "$devTriproxyURL" "$i"
+            replace 'https://stf.example.org/' "$storageURL" "$i"
+            replace 'YOUR_SESSION_SECRET_HERE' "$sessionSecret" "$i"
 
 #Enable them with systemctl
 
