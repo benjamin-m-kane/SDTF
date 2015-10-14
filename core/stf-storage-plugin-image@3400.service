@@ -13,7 +13,8 @@ ExecStartPre=-/usr/bin/docker rm %p-%i
 ExecStart=/usr/bin/docker run --rm \
   --name %p-%i \
   -p %i:3000 \
+  \#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\
   openstf/stf:latest \
   stf storage-plugin-image --port 3000 \
-    --storage-url https://stf.example.org/
+    --storage-url STORAGE_URL
 ExecStop=-/usr/bin/docker stop -t 10 %p-%i

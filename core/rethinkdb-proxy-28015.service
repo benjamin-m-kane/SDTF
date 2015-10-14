@@ -14,6 +14,6 @@ ExecStart=/usr/bin/docker run --rm \
   --name %p \
   -e "AUTHKEY=YOUR_RETHINKDB_AUTH_KEY_HERE_IF_ANY" \
   -p 28015 \
-  -e RETHINKDB_PORT_28015_TCP=tcp://rethinkdb.stf.example.org:28015 \
+  -e RETHINKDB_PORT_28015_TCP=tcp://RETHINKDB_PUBLIC_IP:28015 \
   openstf/ambassador:latest
 ExecStop=-/usr/bin/docker stop -t 10 %p

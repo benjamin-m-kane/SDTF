@@ -13,8 +13,9 @@ ExecStartPre=-/usr/bin/docker rm %p-%i
 ExecStart=/usr/bin/docker run --rm \
   --name %p-%i \
   -e "SECRET=YOUR_SESSION_SECRET_HERE" \
+  \#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\
   -p %i:3000 \
   openstf/stf:latest \
   stf auth-mock --port 3000 \
-    --app-url https://stf.example.org/
+    --app-url APP_URL
 ExecStop=-/usr/bin/docker stop -t 10 %p-%i
