@@ -116,7 +116,7 @@ do
     then
         if test -f "$i"
         then
-            systemctl enable $i
+            systemctl enable "$i"
         fi
     fi
 done
