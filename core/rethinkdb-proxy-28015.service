@@ -17,3 +17,6 @@ ExecStart=/usr/bin/docker run --rm \
   -e RETHINKDB_PORT_28015_TCP=tcp://RETHINKDB_PUBLIC_IP:28015 \
   openstf/ambassador:latest
 ExecStop=-/usr/bin/docker stop -t 10 %p
+
+[Install]
+WantedBy=multi-user.target

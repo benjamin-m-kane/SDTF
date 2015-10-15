@@ -18,3 +18,6 @@ ExecStart=/usr/bin/docker run --rm \
   stf storage-plugin-apk --port 3000 \
     --storage-url STORAGE_URL
 ExecStop=-/usr/bin/docker stop -t 10 %p-%i
+
+[Install]
+WantedBy=multi-user.target

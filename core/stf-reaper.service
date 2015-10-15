@@ -19,3 +19,6 @@ ExecStart=/usr/bin/docker run --rm \
     --connect-sub tcp://APP_TRIPROXY:7150 \
     --heartbeat-timeout 30000
 ExecStop=-/usr/bin/docker stop -t 10 %p
+
+[Install]
+WantedBy=multi-user.target
