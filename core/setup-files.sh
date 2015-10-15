@@ -101,13 +101,13 @@ cp $dhpharamLocation /srv/ssl/dhparam.pem
 
 #Replace the relevant IPs in nginx.conf
 cp nginx.conf /srv/nginx/nginx.conf
-replace '192.168.255.100:3100' $STF_APP':3100'
-replace '192.168.255.150:3200' $STF_AUTH':3200'
-replace '192.168.255.100:3300' $STF_STORAGE_APK':3300'
-replace '192.168.255.100:3400' $STF_STORAGE_IMG':3400'
-replace '192.168.255.100:3500' $STF_STORAGE':3500'
-replace '192.168.255.100:3600' $STF_WEBSOCKET':3600'
-replace 'stf.example.org' $SERVER_NAME
+replace '192.168.255.100:3100' $STF_APP':3100' /srv/nginx/nginx.conf
+replace '192.168.255.150:3200' $STF_AUTH':3200' /srv/nginx/nginx.conf
+replace '192.168.255.100:3300' $STF_STORAGE_APK':3300' /srv/nginx/nginx.conf
+replace '192.168.255.100:3400' $STF_STORAGE_IMG':3400' /srv/nginx/nginx.conf
+replace '192.168.255.100:3500' $STF_STORAGE':3500' /srv/nginx/nginx.conf
+replace '192.168.255.100:3600' $STF_WEBSOCKET':3600' /srv/nginx/nginx.conf
+replace 'stf.example.org' $SERVER_NAME /srv/nginx/nginx.conf
 
 #Enable them with systemctl
 for i in $saveDir*
