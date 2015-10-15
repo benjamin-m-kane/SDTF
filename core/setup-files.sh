@@ -85,7 +85,7 @@ do
             replace 'YOUR_SESSION_SECRET_HERE' $sessionSecret $j
             if [[ $selfsigned == 1 ]]
             then
-                replace ' \#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' ' -e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' $j
+                replace '\\#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\\' '-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\\' $j
             fi
         fi
     fi
