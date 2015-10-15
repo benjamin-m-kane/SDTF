@@ -25,6 +25,15 @@ devTriproxyURL='10.76.71.8'
 storageURL='https://10.76.71.8/'
 sessionSecret='BASH_TEST'
 
+#Change these to the public IP of your different service units. Not relevant to have different ones now, but might be later
+STF_APP='10.76.71.63'
+STF_AUTH='10.76.71.63'
+STF_STORAGE_APK='10.76.71.63'
+STF_STORAGE_IMAGE='10.76.71.63'
+STF_STORAGE='10.76.71.63'
+STF_WEBSOCKET='10.76.71.63'
+SERVER_NAME='10.76.71.63'
+
 #Change these to the locations of your SSL certificate files. Use the ones on the git for a self-signed temporary version
 crtLocation=/home/core/SDTF/ssl/cert.crt
 keyLocation=/home/core/SDTF/ssl/cert.key
@@ -92,24 +101,36 @@ cp $dpharamLocation /srv/ssl/dhparam.pem
 
 #Replace the relevant IPs in nginx.conf
 cp nginx.conf /srv/nginx/nginx.conf
-replace '192.168.255.100:3100' $
-replace '192.168.255.150:3200' $
-replace '192.168.255.100:3300' $
-replace '192.168.255.100:3400' $
-replace '192.168.255.100:3500' $
-replace '192.168.255.100:3600' $
-replace 'stf.example.org' $
+replace '192.168.255.100:3100' $STF_APP':3100'
+replace '192.168.255.150:3200' $STF_AUTH':3200'
+replace '192.168.255.100:3300' $STF_STORAGE_APK':3300'
+replace '192.168.255.100:3400' $STF_STORAGE_IMG':3400'
+replace '192.168.255.100:3500' $STF_STORAGE':3500'
+replace '192.168.255.100:3600' $STF_WEBSOCKET':3600'
+replace 'stf.example.org' $SERVER_NAME
 
 #Enable them with systemctl
 for i in $saveDir*
 do
-    if [[ "$i$ == *.service ]]
+    if [[ "$i" == *.service ]]
     then
         if test -f "$i"
         then
-            #nothing yet
+            systemctl enable $i
         fi
     fi
 done
 
 #Start them
+systemctl start rethinkdb-proxy-28015.service
+systemctl start stf-migrate.service
+systemctl start stf-triproxy-app.service
+systemctl start stf-triproxy-dev.service
+systemctl start stf-storage-temp@3500.service
+systemctl start stf-storage-plugin-apk@3300.service
+systemctl start stf-storage-plugin-image@3400.service
+systemctl start stf-reaper.service
+systemctl start stf-websocket@3600.service
+systemctl start stf-processor@1.service
+systemctl start stf-app@3100.service
+systemctl start nginx.service
