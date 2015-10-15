@@ -85,7 +85,7 @@ do
             replace 'YOUR_SESSION_SECRET_HERE' $sessionSecret $j
             if [[ $selfsigned == 1 ]]
             then
-                replace '\#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' '-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' $j
+                replace ' \#-e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' ' -e "NODE_TLS_REJECT_UNAUTHORIZED=0"\' $j
             fi
         fi
     fi
@@ -97,7 +97,7 @@ mkdir -p /srv/nginx
 mkdir -p /srv/ssl
 cp $crtLocation /srv/ssl/cert.crt
 cp $keyLocation /srv/ssl/cert.key
-cp $dpharamLocation /srv/ssl/dhparam.pem
+cp $dhpharamLocation /srv/ssl/dhparam.pem
 
 #Replace the relevant IPs in nginx.conf
 cp nginx.conf /srv/nginx/nginx.conf
