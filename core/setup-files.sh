@@ -97,7 +97,7 @@ mkdir -p /srv/nginx
 mkdir -p /srv/ssl
 cp $crtLocation /srv/ssl/cert.crt
 cp $keyLocation /srv/ssl/cert.key
-cp $dhpharamLocation /srv/ssl/dhparam.pem
+cp $dhparamLocation /srv/ssl/dhparam.pem
 
 #Replace the relevant IPs in nginx.conf
 cp nginx.conf /srv/nginx/nginx.conf
