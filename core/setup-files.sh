@@ -104,7 +104,7 @@ cp nginx.conf /srv/nginx/nginx.conf
 replace '192.168.255.100:3100' $STF_APP':3100' /srv/nginx/nginx.conf
 replace '192.168.255.150:3200' $STF_AUTH':3200' /srv/nginx/nginx.conf
 replace '192.168.255.100:3300' $STF_STORAGE_APK':3300' /srv/nginx/nginx.conf
-replace '192.168.255.100:3400' $STF_STORAGE_IMG':3400' /srv/nginx/nginx.conf
+replace '192.168.255.100:3400' $STF_STORAGE_IMAGE':3400' /srv/nginx/nginx.conf
 replace '192.168.255.100:3500' $STF_STORAGE':3500' /srv/nginx/nginx.conf
 replace '192.168.255.100:3600' $STF_WEBSOCKET':3600' /srv/nginx/nginx.conf
 replace 'stf.example.org' $SERVER_NAME /srv/nginx/nginx.conf
